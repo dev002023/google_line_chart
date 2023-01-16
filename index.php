@@ -34,17 +34,17 @@ if(isset($result['Time Series (Daily)'])){
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Date', 'OPEN', 'HIGH', 'LOW', 'CLOSE'],
+          ['Date', 'CLOSE', 'LOW', 'OPEN', 'HIGH'],
 
           <?php foreach ($result['Time Series (Daily)'] as $key => $value) { ?>
 
-          ['<?php echo $key; ?>', <?php echo $value['1. open']; ?>, <?php echo $value['2. high']; ?>, <?php echo $value['3. low']; ?>, <?php echo $value['4. close']; ?>],
+          ['<?php echo $key; ?>', <?php echo $value['4. close']; ?>, <?php echo $value['3. low']; ?>, <?php echo $value['1. open']; ?>, <?php echo $value['2. high']; ?>],
 
           <?php     } ?>
         ]);
 
         var options = {
-          title: 'Company Performance',
+          title: 'Stock Performance',
           curveType: 'function',
           legend: { position: 'bottom' }
         };
@@ -56,7 +56,7 @@ if(isset($result['Time Series (Daily)'])){
     </script>
   </head>
   <body>
-    <div id="curve_chart" style="width: 20%; height: 500px"></div>
+    <div id="curve_chart" style="width: 100%; height: 500px"></div>
 
        <?php 
      }else{
